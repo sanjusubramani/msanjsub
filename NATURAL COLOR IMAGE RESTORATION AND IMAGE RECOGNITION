@@ -1,0 +1,976 @@
+PREPROCESSING
+functionvarargout = PREPROCESSING(varargin)
+% PREPROCESSING MATLAB code for PREPROCESSING.fig
+%      PREPROCESSING, by itself, creates a new PREPROCESSING or raises the existing
+%      singleton*.
+%
+%      H = PREPROCESSING returns the handle to a new PREPROCESSING or the handle to
+%      the existing singleton*.
+%
+%      PREPROCESSING('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in PREPROCESSING.M with the given input arguments.
+%
+%      PREPROCESSING('Property','Value',...) creates a new PREPROCESSING or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before PREPROCESSING_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to PREPROCESSING_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help PREPROCESSING
+
+% Last Modified by GUIDE v2.5 11-Sep-2019 01:30:29
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+'gui_Singleton',  gui_Singleton, ...
+'gui_OpeningFcn', @PREPROCESSING_OpeningFcn, ...
+'gui_OutputFcn',  @PREPROCESSING_OutputFcn, ...
+'gui_LayoutFcn',  [] , ...
+'gui_Callback',   []);
+ifnargin&&ischar(varargin{1})
+gui_State.gui_Callback = str2func(varargin{1});
+end
+
+ifnargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before PREPROCESSING is made visible.
+functionPREPROCESSING_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to PREPROCESSING (see VARARGIN)
+
+% Choose default command line output for PREPROCESSING
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes PREPROCESSING wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+functionvarargout = PREPROCESSING_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a1=imread('butterfly_after.jpg');
+axes(handles.axes1);
+imshow(a1)
+
+
+
+% --- Executes on button press in pushbutton2.
+function pushbutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+b=imread('butterfly_after.jpg');
+a2=imnoise(b,'gaussian',0.08);
+% gaussian noise, mean = 0, varience = 0.08
+axes(handles.axes2);
+imshow(a2);
+
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a1 = imread('butterfly_after.jpg');
+a3 = imgaussfilt(a1,1);
+imwrite(a3,'t1.jpg');
+axes(handles.axes3);
+imshow(a3)
+
+% --- Executes on button press in pushbutton4.
+function pushbutton4_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton5.
+function pushbutton5_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+clearstr = 'clear all'
+avalin('base',clearstr);
+
+%delete  the figure
+delete(handles.figureExitButton);
+
+
+function edit4_Callback(hObject, eventdata, handles)
+% hObject    handle to edit4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit4 as text
+%        str2double(get(hObject,'String')) returns contents of edit4 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit5_Callback(hObject, eventdata, handles)
+% hObject    handle to edit5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit5 as text
+%        str2double(get(hObject,'String')) returns contents of edit5 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit6_Callback(hObject, eventdata, handles)
+% hObject    handle to edit6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit6 as text
+%        str2double(get(hObject,'String')) returns contents of edit6 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit6_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in togglebutton1.
+function togglebutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to togglebutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of togglebutton1
+
+
+% --- Executes during object creation, after setting all properties.
+function figure1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+MULTITHRESHOLDING
+
+functionvarargout = PROMULTITHRESHOLDING(varargin)
+% PROMULTITHRESHOLDING MATLAB code for PROMULTITHRESHOLDING.fig
+%      PROMULTITHRESHOLDING, by itself, creates a new PROMULTITHRESHOLDING or raises the existing
+%      singleton*.
+%
+%      H = PROMULTITHRESHOLDING returns the handle to a new PROMULTITHRESHOLDING or the handle to
+%      the existing singleton*.
+%
+%      PROMULTITHRESHOLDING('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in PROMULTITHRESHOLDING.M with the given input arguments.
+%
+%      PROMULTITHRESHOLDING('Property','Value',...) creates a new PROMULTITHRESHOLDING or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before PROMULTITHRESHOLDING_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to PROMULTITHRESHOLDING_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help PROMULTITHRESHOLDING
+
+% Last Modified by GUIDE v2.5 11-Sep-2019 03:09:09
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+'gui_Singleton',  gui_Singleton, ...
+'gui_OpeningFcn', @PROMULTITHRESHOLDING_OpeningFcn, ...
+'gui_OutputFcn',  @PROMULTITHRESHOLDING_OutputFcn, ...
+'gui_LayoutFcn',  [] , ...
+'gui_Callback',   []);
+ifnargin&&ischar(varargin{1})
+gui_State.gui_Callback = str2func(varargin{1});
+end
+
+ifnargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before PROMULTITHRESHOLDING is made visible.
+functionPROMULTITHRESHOLDING_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to PROMULTITHRESHOLDING (see VARARGIN)
+
+% Choose default command line output for PROMULTITHRESHOLDING
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes PROMULTITHRESHOLDING wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+functionvarargout = PROMULTITHRESHOLDING_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+
+function edit1_Callback(~, ~, handles)
+% hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit1 as text
+%        str2double(get(hObject,'String')) returns contents of edit1 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit1_CreateFcn(hObject, ~, handles)
+% hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit2_Callback(~, ~, ~)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit2 as text
+%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit3_Callback(hObject, eventdata, handles)
+% hObject    handle to edit3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit3 as text
+%        str2double(get(hObject,'String')) returns contents of edit3 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a=imread('t1.jpg');% Read the Image
+axes(handles.axes1);
+imshow(a);
+
+
+% --- Executes on button press in pushbutton2.
+function pushbutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a=imread('butterfly_after.jpg');% Read the Image
+Y=rgb2gray(a);
+imwrite(Y,'t2.jpg');
+axes(handles.axes2);
+imshow(Y);
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+B =imread('t2.jpg')
+axes(handles.axes3);
+imhist(B)
+
+
+function edit4_Callback(hObject, eventdata, handles)
+% hObject    handle to edit4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit4 as text
+%        str2double(get(hObject,'String')) returns contents of edit4 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+ifispc&&isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton4.
+function pushbutton4_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a=imread('t2.jpg');% Read the Image
+n=imhist(a); % Compute the histogram
+N=sum(n); % sum the values of all the histogram values
+max=0; %initialize maximum to zero
+fori=1:256
+    P(i)=n(i)/N; %Computing the probability of each intensity level
+end
+
+for T=2:255      % step through all thresholds from 2 to 255
+    w0=sum(P(1:T)); % Probability of class 1 (separated by threshold)
+    w1=sum(P(T+1:256)); %probability of class2 (separated by threshold)
+    u0=dot([0:T-1],P(1:T))/w0; % class mean u0
+    u1=dot([T:255],P(T+1:256))/w1; % class mean u1
+    sigma=w0*w1*((u1-u0)^2); % compute sigma i.e variance(between class)
+if sigma>max % compare sigma with maximum 
+        max=sigma; % update the value of max i.e max=sigma
+        threshold=T-1; % desired threshold corresponds to maximum variance of between class
+end
+end
+
+bw=im2bw(a,100/255);
+% Convert to Binary Image
+imwrite(bw,'t3.jpg');
+axes(handles.axes4);
+imshow(bw)
+
+COLOR BASED SEGMENTATION
+clear all; close all; clc
+%% General settings
+fontSize = 14;
+%% Pick the image and Load the image
+ [filename, pathname] = uigetfile( ...
+       {'*.jpg;*.tif;*.tiff;*.png;*.bmp', 'All image Files (*.jpg, *.tif, *.tiff, *.png, *.bmp)'; ...
+'*.*',                   'All Files (*.*)'}, ...
+'Pick a file');
+f = fullfile(pathname, filename);
+disp('Reading image')
+rgbImage = imread(f);
+[rows columns numberOfColorBands] = size(rgbImage);
+%% Create directory for the results
+    k = findstr('.', filename); % find where the extension starts     
+FileToSave=  filename(1:k-1); %
+fileNameWrongCounter  = 0; 
+% if the name of the input wav file is longer than 256 chrachters, 
+% which is the limit for windows folder name's length, 
+% the directory will be composed of the first 200 chraracters
+% of the file + the "CounterNumber" will be added to see, 
+% how meny files has to long name
+% However, because of the excel file names restriction, the file name
+% cannot be 256, but only 218. Therefore, the folder name lengthe is
+% restricted to 150
+CreateNewFoldrSucces = 0;
+whileCreateNewFoldrSucces == 0
+if length(filename) <  150
+% the lenght of the name for the folder can be up to 255
+% characters, but later, the lenght of the file name (TOGETHER WITH
+% the path) of the excel/csv files with the results can be only 218
+DirectoryName = ['Res_', FileToSave]; 
+% Matalb does not like when the names beginns with a NUMBER!!!
+% F = folder
+% dontapend the extension of the wav file: (.wav) = 4characters
+% FileToSave is already adjusted with respect to the
+% prescribed file name, and is without the extension
+          [SUCCESS,MESSAGE,MESSAGEID] = mkdir(DirectoryName);
+% SUCCESS = 1 -> folder was created.
+% what if the folder already exists?
+else% if the input file name is longer than 150 characters
+fileNameWrongCounter = fileNameWrongCounter + 1;
+DirectoryName = strcat('Res_', FileToSave(1:30), '_', num2str(fileNameWrongCounter));
+          [SUCCESS,MESSAGE,MESSAGEID] = mkdir(DirectoryName );          
+end
+
+if SUCCESS == 1
+CreateNewFoldrSucces = 1;         
+break
+end
+end
+%% Diary - save content of teh Command Window to a txt file
+CommantWindowText=  strcat(pathname, DirectoryName, '\ComWind.txt');
+diary(CommantWindowText)
+% Everything that is printed in the Command window will be saved in a
+% text file. End tag is "diary off" in the end of the script  
+%% If the image is monochrome (indexed), convert it to color. 
+% Check to see if it's an 8-bit image needed later for scaling).
+ifstrcmpi(class(rgbImage), 'uint8')
+% Flag for 256 gray levels.
+eightBit = true;
+else
+eightBit = false;
+end
+
+ifnumberOfColorBands == 1
+ifisempty(storedColorMap)
+% Just a simple gray level image, not indexed with a stored color map.
+% Create a 3D true color image where we copy the monochrome image into all 3 (R, G, & B) color planes.
+rgbImage = cat(3, rgbImage, rgbImage, rgbImage);
+else
+% It's an indexed image.
+rgbImage = ind2rgb(rgbImage, storedColorMap);
+% ind2rgb() will convert it to double and normalize it to the range 0-1.
+% Convert back to uint8 in the range 0-255, if needed.
+ifeightBit
+rgbImage = uint8(255 * rgbImage);
+end
+end
+end
+
+%% Display the color image 
+disp('Displaying color original image')
+F1 = figure(1);
+subplot(3,4,1);
+imshow(rgbImage);
+
+ifnumberOfColorBands> 1 
+title('Original Color Image', 'FontSize', fontSize); 
+else
+        caption = sprintf('Original Indexed Image\n(converted to true color with its stored colormap)');
+title(caption, 'FontSize', fontSize);
+end
+
+%% Size of the picture - to occupy the whole screen
+scnsize = get(0,'ScreenSize'); % - - width height
+ position = get(F1,'Position'); % x-pos y-poswidht height
+outerpos = get(F1,'OuterPosition');
+ borders = outerpos - position;
+ edge = abs(borders(1))/2;
+ pos1 = [edge,...
+        1/20*scnsize(4), ...
+        9/10*scnsize(3),...
+        9/10*scnsize(4)];
+ set(F1,'OuterPosition',pos1) 
+%% Explore RGB    
+% Extract out the color bands from the original image
+% into 3 separate 2D arrays, one for each color component.
+redBand = rgbImage(:, :, 1); 
+greenBand = rgbImage(:, :, 2); 
+blueBand = rgbImage(:, :, 3); 
+% Display them.
+subplot(3, 4, 2);
+imshow(redBand);
+title('Red Band', 'FontSize', fontSize);
+subplot(3, 4, 3);
+imshow(greenBand);
+title('Green Band', 'FontSize', fontSize);
+subplot(3, 4, 4);
+imshow(blueBand);
+title('Blue Band', 'FontSize', fontSize);
+%% Compute and plot the red histogram. 
+hR = subplot(3, 4, 6); 
+    [countsR, grayLevelsR] = imhist(redBand); 
+maxGLValueR = find(countsR> 0, 1, 'last'); 
+maxCountR = max(countsR); 
+bar(countsR, 'r'); 
+    grid on; 
+xlabel('Gray Levels'); 
+ylabel('Pixel Count'); 
+title('Histogram of Red Band', 'FontSize', fontSize);
+%% Compute and plot the green histogram. 
+hG = subplot(3, 4, 7); 
+    [countsG, grayLevelsG] = imhist(greenBand); 
+maxGLValueG = find(countsG> 0, 1, 'last'); 
+maxCountG = max(countsG); 
+bar(countsG, 'g', 'BarWidth', 0.95); 
+    grid on; 
+xlabel('Gray Levels'); 
+ylabel('Pixel Count'); 
+title('Histogram of Green Band', 'FontSize', fontSize);
+%% Compute and plot the blue histogram. 
+hB = subplot(3, 4, 8); 
+    [countsB, grayLevelsB] = imhist(blueBand); 
+maxGLValueB = find(countsB> 0, 1, 'last'); 
+maxCountB = max(countsB); 
+bar(countsB, 'b'); 
+    grid on; 
+xlabel('Gray Levels'); 
+ylabel('Pixel Count'); 
+title('Histogram of Blue Band', 'FontSize', fontSize);
+%% Set all axes to be the same width and height.
+% This makes it easier to compare them.
+maxGL = max([maxGLValueR,  maxGLValueG, maxGLValueB]); 
+ifeightBit
+maxGL = 255; 
+end
+maxCount = max([maxCountR,  maxCountG, maxCountB]); 
+axis([hRhGhB], [0 maxGL 0 maxCount]); 
+%% Plot all 3 histograms in one plot.
+subplot(3, 4, 5); 
+plot(grayLevelsR, countsR, 'r', 'LineWidth', 2); 
+    grid on; 
+xlabel('Gray Levels'); 
+ylabel('Pixel Count'); 
+    hold on; 
+plot(grayLevelsG, countsG, 'g', 'LineWidth', 2); 
+plot(grayLevelsB, countsB, 'b', 'LineWidth', 2); 
+title('Histogram of All Bands', 'FontSize', fontSize); 
+maxGrayLevel = max([maxGLValueR, maxGLValueG, maxGLValueB]); 
+% Trim x-axis to just the max gray level on the bright end. 
+ifeightBit
+xlim([0 255]); 
+else
+xlim([0 maxGrayLevel]); 
+end
+%% Now select thresholds for the 3 color bands.    
+% pop-up window        
+prompt = {'RED color threshold LOWER:','RED color threshold UPPER:', ...
+'GREEN color threshold LOWER:','GREEN color threshold UPPER:', ...
+'BLUE color threshold LOWER:','BLUE color threshold UPPER:'};
+dlg_title = 'Input';
+num_lines = 1;
+%def = {'0','50', '150','255','0','100'}; % only green
+def = {'45','150', '50','150','0','50'}; % green and similar
+%def = {'235','255','235','255','0','200'};% red
+% def = {'250','255', '250','255','0','245'};% yellow
+% def = {'190','255', '160','245','60','165'};% yellow + light brown + yellow-white
+answer = inputdlg(prompt,dlg_title,num_lines,def);
+
+redThresholdLow = str2num(answer{1});
+redThresholdHigh = str2num(answer{2});
+greenThresholdLow = str2num(answer{3});
+greenThresholdHigh = str2num(answer{4});
+blueThresholdLow = str2num(answer{5});
+blueThresholdHigh = str2num(answer{6});
+%% Show the thresholds as vertical red bars on the histograms.
+PlaceThresholdBars(1, 3,4, 6, redThresholdLow, redThresholdHigh, fontSize, max(countsR));
+PlaceThresholdBars(1, 3,4, 7, greenThresholdLow, greenThresholdHigh,fontSize, max(countsG));
+PlaceThresholdBars(1, 3,4, 8, blueThresholdLow, blueThresholdHigh,fontSize, max(countsB));
+
+%% Now apply each color band's particular thresholds to the color band
+redMask = (redBand>= redThresholdLow) & (redBand<= redThresholdHigh);
+greenMask = (greenBand>= greenThresholdLow) & (greenBand<= greenThresholdHigh);
+blueMask = (blueBand>= blueThresholdLow) & (blueBand<= blueThresholdHigh);
+%% Display the thresholded binary images.
+subplot(3, 4, 10);
+imshow(redMask, []);
+title('Is-Red Mask', 'FontSize', fontSize);
+subplot(3, 4, 11);
+imshow(greenMask, []);
+title('Is-Green Mask', 'FontSize', fontSize);
+subplot(3, 4, 12);
+imshow(blueMask, []);
+title('Is-Blue Mask', 'FontSize', fontSize);
+
+%% Combine the masks to find where all 3 are "true."
+% Then we will have the mask of only the chosen color parts of the image.
+ObjectsMask = uint8(redMask&greenMask&blueMask);
+subplot(3, 4, 9);
+imshow(ObjectsMask, []);
+    caption = sprintf('Mask of the objects with chosen color');
+title(caption, 'FontSize', fontSize);
+
+ f2 = fullfile(pathname, DirectoryName);    
+filNamePlot=  strcat(f2, '\Figure_1.jpg');
+saveas(gcf,num2str(char(filNamePlot)))       
+%% Histogram small areas 
+% Measure the mean RGB and area of all the detected blobs.
+    [meanRGB, areas, numberOfBlobs] = MeasureBlobs(ObjectsMask, redBand, greenBand, blueBand);
+    F30 = figure(30);
+    plot(areas(:,1))
+title('Distribution of the areas of the blobls')
+
+save('BlobAreas', 'meanRGB', 'areas', 'numberOfBlobs') 
+% Size of the picture - to occupy the whole screen
+ pos2 = [1/4*scnsize(3),...
+        1/20*scnsize(4), ...
+        2/3*scnsize(3),...
+        2/3*scnsize(4)];
+ set(F30,'OuterPosition',pos2) 
+xlabel('Number of blobs/"islands"')
+ylabel('Area of the blobs [pixels]')
+filNamePlot=  strcat(f2, '\Figure_30.jpg');
+saveas(gcf,num2str(char(filNamePlot)))   
+
+figure(31)
+XTickDescr = [0,5,10,20,50,100,200,300,500,1000,2000,3000];
+    N = hist(areas(:,1), XTickDescr);
+    bar(N)
+    set(gca,'XTick',1:length(XTickDescr))
+    set(gca,'XTickLabel',XTickDescr)
+xlhand = get(gca,'xlabel');
+    set(xlhand,'string','X','fontsize',0.3) 
+xlabel('Size of the blobs [pixel] (each bar includes current value, exlude value to the right)')
+ylabel('Number of blobs of current size')
+zl = max(areas(:,1));
+filNamePlot=  strcat(f2, '\Figure_31_histBlobs.jpg');
+saveas(gcf,num2str(char(filNamePlot)))   
+%% Insert the minimal area that will be counted
+% Every blob smaller than this one will be ommited
+prompt = {'Minimal area [pixels] of the blob that will be kept:'};
+dlg_title = 'Min.area';
+num_lines = 1;
+def = {'10'};% yellow
+answer2 = inputdlg(prompt,dlg_title,num_lines,def);
+answer2 = str2num(answer2{1});
+
+%% Ignore all small areas 
+F70 = figure(70);
+subplot(2,2,1)
+imshow(ObjectsMask, []);
+title('Original mask', 'FontSize', fontSize)   
+ set(F70,'OuterPosition',pos1) 
+
+ObjectsMask = uint8(bwareaopen(ObjectsMask,answer2));
+figure(70)
+subplot(2,2,2)
+imshow(ObjectsMask, []);
+title('Only the big particles', 'FontSize', fontSize)   
+%% Fill in any holes in the regions, since they are most likely red also.
+message = sprintf('Do you want to close the holes in the blobs?');
+reply = questdlg(message, 'Close holes?', 'Yes','No', 'Yes');
+ifstrcmpi(reply, 'Yes')
+figure(70)
+subplot(2,2,1);
+imshow(ObjectsMask, []);
+title('Original mask', 'FontSize', fontSize)   
+subplot(2,2,3);
+ObjectsMask = uint8(imfill(ObjectsMask, 'holes'));
+imshow(ObjectsMask, []);
+title('Mask with filled holes', 'FontSize', fontSize);  
+end
+
+filNamePlot=  strcat(f2, '\Figure_70.png');
+saveas(gcf,num2str(char(filNamePlot)))       
+%% Use the object mask to mask out the portions of the rgb image.
+maskedImageR = ObjectsMask .* redBand;
+maskedImageG = ObjectsMask .* greenBand;
+maskedImageB = ObjectsMask .* blueBand;
+% Concatenate the masked color bands to form the rgb image.
+maskedRGBImage = cat(3, maskedImageR, maskedImageG, maskedImageB);
+
+%% Show the masked off and original image.
+F100 = figure(100);
+subplot(1,2,1);
+imshow(maskedRGBImage);
+        caption = sprintf('Masked Original Image');
+title(caption, 'FontSize', fontSize);           
+subplot(1,2,2);
+imshow(rgbImage);
+title('The Original Image', 'FontSize', fontSize);
+
+    set(F100,'OuterPosition',pos1)                                
+
+Text_descr=  strcat('R_l =', num2str(redThresholdLow), ', R_u = ', num2str(redThresholdHigh), ...
+', G_l =', num2str(greenThresholdLow), ', G_u = ', num2str(greenThresholdHigh), ...
+', B_l =', num2str(blueThresholdLow), ', B_u = ', num2str(blueThresholdHigh))
+    Text_descr2 =  strcat('Filled holes = ', reply, ', minimal counted area = ', num2str(answer2), ' [pixel]', ...
+', max. blob size = ', num2str(max(areas(:,1))), ' [pixel], # of counted blobs = ', num2str(length(areas(:,1))));                        
+
+    text(-3000,2200,Text_descr) ;       
+    text(-3000,2500,Text_descr2) ;       
+
+f2 = fullfile(pathname, DirectoryName);    
+filNamePlot=  strcat(f2, '\Figure_100.jpg');
+saveas(gcf,num2str(char(filNamePlot)))
+
+%% Measure the mean RGB and area of all the detected blobs.
+clear meanRGB
+clear areas
+clear numberOfBlobs
+    [meanRGB, areas, numberOfBlobs] = MeasureBlobs(ObjectsMask, redBand, greenBand, blueBand);
+ifnumberOfBlobs> 0
+fprintf(1, '\n----------------------------------------------\n');
+fprintf(1, 'Blob #, Area in Pixels, Mean R, Mean G, Mean B\n');
+fprintf(1, '----------------------------------------------\n');
+forblobNumber = 1 :numberOfBlobs
+fprintf(1, '#%5d, %14d, %6.2f, %6.2f, %6.2f\n', blobNumber, areas(blobNumber), ...
+meanRGB(blobNumber, 1), meanRGB(blobNumber, 2), meanRGB(blobNumber, 3));
+end
+else
+% Alert user that no  blobs were found.
+uiwait(msgbox('No blobs of given color were found in the image'), 'Error', 'error')      
+end
+%% Compute how many % of the image the restult takes
+OrigImageArea = rows*columns % pxls ... 100% 
+AreaOfChosenColor = sum(areas(:,1)) % ... x %
+Area_Procent = (AreaOfChosenColor/OrigImageArea)*100
+uiwait(msgbox(sprintf('%s %0.5g %s','The chosen color covers ', Area_Procent, ' % of the whole image.'), 'Results', 'modal'))
+%% Plot only the resulted masked image - change the mask color to white
+F100 = figure(101);  
+imshow(maskedRGBImage);
+% caption = sprintf(['Masked Original Image. Given color covers ', num2str(Area_Procent), ' % of the area']);
+% title(caption, 'FontSize', fontSize);             
+        T101 = title(['Masked Original Image. Given color covers ', num2str(Area_Procent), ' % of the area.']);
+set(T101, 'FontSize', fontSize);                
+    set(F100,'OuterPosition',pos1)                                     
+
+f2 = fullfile(pathname, DirectoryName);    
+filNamePlot=  strcat(f2, '\Figure_101_Res.png');
+saveas(gcf,num2str(char(filNamePlot)))
+
+ %% save into xls file 
+ message = sprintf('Do you want to save the resuts?');
+ reply = questdlg(message, 'Save results?', 'Yes','No', 'Yes');
+ifstrcmpi(reply, 'Yes')
+
+XlsFilesave = fullfile(pathname, DirectoryName, 'BlobsResults');
+RGBHeadings = {'Red band','Green band' ,'Blue band'};
+
+xlswrite(XlsFilesave, RGBHeadings,'meanRGB', 'A1') ;
+xlswrite(XlsFilesave, meanRGB,'meanRGB', 'A2') ;
+
+xlswrite(XlsFilesave, RGBHeadings,'areas', 'A1') ;
+xlswrite(XlsFilesave,areas,'areas', 'A2') ;
+
+GeneralSetting = [numberOfBlobs, redThresholdLow ,redThresholdHigh , greenThresholdLow , greenThresholdHigh,  blueThresholdLow ,blueThresholdHigh];
+  Headings = {'numberOfBlobs','redThresholdLow' ,'redThresholdHigh' , 'greenThresholdLow' , 'greenThresholdHigh',  'blueThresholdLow' ,'blueThresholdHigh'};
+xlswrite(XlsFilesave, GeneralSetting,'GeneralSetting', 'A2') ;
+xlswrite(XlsFilesave, Headings,'GeneralSetting', 'A1') ;
+xlswrite(XlsFilesave, {'Procents of the image coverd by the chosen color:'},'GeneralSetting', 'A4') ;
+xlswrite(XlsFilesave, Area_Procent,'GeneralSetting', 'A5') ;
+
+xlswrite(XlsFilesave, {'Minimale area [pixel] of the blobs'},'GeneralSetting', 'A7') ;
+xlswrite(XlsFilesave, answer2,'GeneralSetting', 'A8') ;
+end
+%% Displaying the end of the computation  
+disp('*************************************************************')
+disp('*****              Analysis has finnished               *****')
+disp('*****          Check the xls file for results           *****')
+disp('*************************************************************')
+
+%% Stop writing in the file  
+  diary off
+
+COLOR DETECTION
+% Demo macro to very, very simple color detection in RGB color space
+% by ImageAnalyst
+clc;
+close all;
+
+% Read standard MATLAB demo image.
+rgbImage = imread('butterfly_after.jpg');
+
+% Display the original image.
+subplot(3, 4, 1);
+imshow(rgbImage);
+title('Original RGB Image');
+
+% Maximize figure.
+set(gcf, 'Position', get(0, 'ScreenSize'));
+
+% Split the original image into color bands.
+redBand = rgbImage(:,:, 1);
+greenBand = rgbImage(:,:, 2);
+blueBand = rgbImage(:,:, 3);
+
+% Display them.
+subplot(3, 4, 2);
+imshow(redBand);
+title('Red band');
+subplot(3, 4, 3);
+imshow(greenBand);
+title('Green band');
+subplot(3, 4, 4);
+imshow(blueBand);
+title('Blue Band');
+
+% Threshold each color band.
+redthreshold = 68;
+greenThreshold = 70;
+blueThreshold = 72;
+redMask = (redBand>redthreshold);
+greenMask = (greenBand<greenThreshold);
+blueMask = (blueBand<blueThreshold);
+
+% Display them.
+subplot(3, 4, 6);
+imshow(redMask, []);
+title('Red Mask');
+subplot(3, 4, 7);
+imshow(greenMask, []);
+title('Green Mask');
+subplot(3, 4, 8);
+imshow(blueMask, []);
+title('Blue Mask');
+
+% Combine the masks to find where all 3 are "true."
+redObjectsMask = uint8(redMask&greenMask&blueMask);
+subplot(3, 4, 9);
+imshow(redObjectsMask, []);
+title('Red Objects Mask');
+maskedrgbImage = uint8(zeros(size(redObjectsMask))); % Initialize
+maskedrgbImage(:,:,1) = rgbImage(:,:,1) .* redObjectsMask;
+maskedrgbImage(:,:,2) = rgbImage(:,:,2) .* redObjectsMask;
+maskedrgbImage(:,:,3) = rgbImage(:,:,3) .* redObjectsMask;
+subplot(3, 4, 10);
+imshow(maskedrgbImage);
+title('Masked Original Image');
+
+SHPAE DETECTION
+% Shapes Classifier
+% Step 1: Read image Read in
+% Step 2: Convert image from rgb to gray
+% Step 3: Threshold the image
+% Step 4: Invert the Binary Image
+% Step 5: Find the boundaries Concentrate
+% Step 6: Determine Shapes properties
+% Step 7: Classify Shapes according to properties
+% Square      = 3
+% Rectangular = 2
+% Circle      = 1
+% UNKNOWN     = 0
+%------------------------------------------------------------------------
+function W = Classify(ImageFile)
+% Step 1: Read image Read in
+RGB = imread('butterfly_after.jpg');
+figure();
+subplot(2,3,1)
+imshow(RGB)
+title('Original Image');
+
+% Step 2: Convert image from rgb to gray
+GRAY = rgb2gray(RGB);
+subplot(2,3,2)
+imshow(GRAY)
+title('Gray Image');
+
+% Step 3: Threshold the image Convert the image to black and white in order
+% to prepare for boundary tracing using bwboundaries. 
+threshold = graythresh(GRAY);
+BW = im2bw(GRAY, threshold);
+subplot(2,3,3)
+imshow(BW)
+title('Binary Image');
+
+% Step 4: Invert the Binary Image
+BW = ~ BW;
+subplot(2,3,4)
+imshow(BW)
+title('Inverted Binary Image');
+
+% Step 5: Find the boundaries Concentrate only on the exterior boundaries.
+% Option 'noholes' will accelerate the processing by preventing
+% bwboundaries from searching for inner contours. 
+[B,L] = bwboundaries(BW, 'noholes');
+
+% Step 6: Determine objects properties
+STATS = regionprops(L, 'all'); % we need 'BoundingBox' and 'Extent'
+
+% Step 7: Classify Shapes according to properties
+% Square = 3 = (1 + 2) = (X=Y + Extent = 1)
+% Rectangular = 2 = (0 + 2) = (only Extent = 1)
+% Circle = 1 = (1 + 0) = (X=Y , Extent < 1)
+% UNKNOWN = 0
+
+subplot(2,3,5)
+imshow(RGB)
+title('Results');
+hold on
+fori = 1 : length(STATS)
+  W(i) = uint8(abs(STATS(i).BoundingBox(3)-STATS(i).BoundingBox(4)) < 0.1);
+  W(i) = W(i) + 2 * uint8((STATS(i).Extent - 1) == 0 );
+  centroid = STATS(i).Centroid;
+switch W(i)
+case 1
+          plot(centroid(1),centroid(2),'wO');
+case 2
+          plot(centroid(1),centroid(2),'wX');
+case 3
+          plot(centroid(1),centroid(2),'wS');
+end
+end
+return
